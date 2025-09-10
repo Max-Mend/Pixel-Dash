@@ -1,7 +1,7 @@
 import pygame
 
 from data import *
-
+from player import Player
 
 class Main:
     def __init__(self):
@@ -12,6 +12,8 @@ class Main:
         self.clock = pygame.time.Clock()
         self.running = True
 
+        self.player = Player(100, 600)
+
         self.run()
 
     def run(self):
@@ -21,6 +23,9 @@ class Main:
                     self.running = False
 
             self.window.fill((0, 0, 0))  # Clear screen with black
+            self.player.update()
+            self.player.draw(self.window)
+
             pygame.display.flip()  # Update display
             self.clock.tick(60)  # Cap at 60 FPS
 
